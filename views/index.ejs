@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('includes/head') %> 
+<body>
+    <header class="header">
+<h1>qaser</h1>
+<h5>shrink your links </h6>
+    </header>
+<main class="main">
+    <form method="POST" action="/short-it" id="shrink-form">
+        <label for="fullUrl">
+            <input type="text" name="fullUrl"
+            required
+            id="fullUrl" placeholder="type the full url to shrink with http !">
+        </label>
+<button type="submit">shrink</button>
+    </form>
+</main>
+<section id="url_section">
+    <div id="full_url"> full url
+        <ul class="urlList">
+            <% if(Data) Data.map(url=>{   %>
+<li><a href="<%=url.fullUrl %>"><%= url.fullUrl %></a></li>
+                <%})%>
+        </ul>
+    </div>
+    <div id="short_url">short url
+        <ul class="urlList">
+            <% if(Data) Data.map(url=>{   %>
+                <li><a href="http://localhost:4000/direct/<%=url.shortUrl %>"><%= url.shortUrl %></a></li>
+                <%})%>
+                        </ul>
+        </ul>
+    </div>
+    <div id="clicks">clicks
+        <ul class="urlList">
+            <% if(Data) Data.forEach(url=>{   %>
+                <li><%= url.clicks %></li>
+                                <%})%>
+                        </ul>
+        </ul>
+    </div>
+   
+</section>
+</body>
+</html> 
